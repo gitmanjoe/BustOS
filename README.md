@@ -5,5 +5,5 @@ This is our attempt at making an operating system from scratch.
 # Implemented Features
 Bootloader
 # DISCLAIMER:
-Do not use, copy or steal any of this code.
+Do not use, copy or steal any of this code. <br>
 If you do, shame on you and your family.
