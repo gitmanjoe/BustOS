@@ -10,6 +10,7 @@ This is our attempt at making an operating system from scratch.
 7. Shell
 8. Cowsay
 ## Implemented Features in Order From Newest to Oldest
+Half-Ass text typing
 Welcome message  
 Bootloader
 ## DISCLAIMER:
