@@ -9,11 +9,10 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.zip
 
 #Compiled project binaries
-Releases/
-BustOS.bin
+[Rr]eleases/
+[Bb]ust[Oo][Ss].bin
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
