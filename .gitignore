@@ -13,7 +13,7 @@
 
 #Compiled project binaries
 Releases/
-bustOS.bin
+BustOS.bin
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
