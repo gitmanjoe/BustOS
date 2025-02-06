@@ -6,10 +6,12 @@ bits 16
 ; hence offsets should be calculated in relation to this address
 org 0x7c00
 
+print_loop:
 mov al,'?'
 call print_char
+jmp print_loop
 
-jmp $ ; loop forever
+
 
 print_char:
     mov ah,0x0e ; BIOS teletype output
