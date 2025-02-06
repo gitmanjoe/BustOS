@@ -1,4 +1,4 @@
-; boatloader4.asm
+; boatloader.asm
 ; prints character to the screen using a function
 ; generate 16 bit code code
 bits 16
