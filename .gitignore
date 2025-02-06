@@ -13,6 +13,7 @@
 
 #Compiled project binaries
 Releases/
+bootloader.bin
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
