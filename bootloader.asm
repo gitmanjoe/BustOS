@@ -8,6 +8,12 @@ mov bx, Real_Msg
 call print_string
 jmp $
 
+; Data
+Welcome_Msg:
+db 'BustOS is Starting Up',13,10,0 
+Real_Msg:
+db 'BustOS is in 16 bits Real Mode',13,10,0 
+
 print_char:
     mov ah,0x0e ; BIOS teletype output
     push bp
@@ -87,12 +93,6 @@ dw gdt_end - gdt_start - 1 ; Size of our GDT , always less one
 dd gdt_start ; Start address of our GDT
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
-
-; Data
-Welcome_Msg:
-db 'BustOS is Starting Up',13,10,0 
-Real_Msg:
-db 'BustOS is in 16 bits Real Mode',13,10,0 
 
 times 510 - ($-$$) db 0
 dw 0xaa55
