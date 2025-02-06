@@ -8,7 +8,11 @@ org 0x7c00
 
 mov bx, Welcome_Msg
 call print_string
-jmp $
+read_loop:
+    mov ah, 0x00
+    int 0x16
+    call print_char
+    jmp read_loop
 
 print_char:
     mov ah,0x0e ; BIOS teletype output
@@ -32,7 +36,7 @@ done:
     
 ; Data
 Welcome_Msg:
-db 'Welcome to the OsX Operating System',13,10,0 ;
+db 'Welcome to BustOS!',13,10,0 ;
 
 times 510 - ($-$$) db 0
 dw 0xaa55
