@@ -12,7 +12,7 @@
 *.zip
 
 #Compiled project binaries
-Bootloader.bin
+Releases/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
