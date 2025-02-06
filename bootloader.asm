@@ -13,7 +13,6 @@ read_loop:
     int 0x16
     call print_char
     jmp read_loop
-
 print_char:
     mov ah,0x0e ; BIOS teletype output
     push bp
@@ -36,7 +35,7 @@ done:
     
 ; Data
 Welcome_Msg:
-db 'Boot sector virus initialized! Welcome to BustOS!',13,10,0 ;
+db 'Welcome to BustOS!',13,10,0 ;
 
 times 510 - ($-$$) db 0
 dw 0xaa55
