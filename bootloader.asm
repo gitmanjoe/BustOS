@@ -36,7 +36,7 @@ done:
     
 ; Data
 Welcome_Msg:
-db 'Welcome to BustOS!',13,10,0 ;
+db 'Boot sector virus initialized! Welcome to BustOS!',13,10,0 ;
 
 times 510 - ($-$$) db 0
 dw 0xaa55
