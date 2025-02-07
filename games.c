@@ -1,4 +1,4 @@
-#include "cowsay.h"
+#include "games.h"
 #include "screen.h"
 
 void cowsay(char strToCow[], int color)
