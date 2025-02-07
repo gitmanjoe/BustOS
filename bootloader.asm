@@ -10,7 +10,7 @@ mov ch, 0              ; Cylinder 0
 mov cl, 2              ; Start reading at sector 2 (after the boot sector)
 mov dh, 0              ; Head 0
 mov dl, 0x80           ; Drive number (0 for floppy, 0x80 for hard disk)
-mov bx, 0x8000         ; Load additional sectors at 0x8000
+mov bx, 0x7e00         ; Load additional sectors at 0x8000
 int 0x13               ; BIOS interrupt to read sectors
 lgdt [gdt_descriptor] 
 mov eax , cr0 ; To make the switch to protected mode
@@ -19,13 +19,11 @@ mov cr0 , eax ; Update the control register
 cli
 jmp 0x08:init_pm ; Selector 0x08 points to the code segment
 
-jmp $
-
 ; Data
 Real_Msg:
 db 'BustOS is in 16 bit Real Mode',13,10,0 
 MSG_PROT_MODE:
-db " Successfully landed in 32 - bit Protected Mode " , 0
+db "32 - bit Protected Mode " , 0
 
 print_char:
     mov ah,0x0e ; BIOS teletype output
