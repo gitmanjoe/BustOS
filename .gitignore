@@ -232,6 +232,10 @@ _pkginfo.txt
 *.appxbundle
 *.appxupload
 
+#Property of JX
+kernel.bin
+bootloader.bin
+kernel.o
 *.bat
 
 # Visual Studio cache files
