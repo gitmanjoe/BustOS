@@ -6,8 +6,8 @@
 
 void kernel() {
     clear_screen(0x0f);
-    char sigma[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
-    printf(sigma, TEXT_COLOUR);
-    set_cursor(0, 41);
+    char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
+    printf(welcome, TEXT_COLOUR);
+    //set_cursor(0, 41);
     while (true) {}
 }

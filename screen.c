@@ -1,4 +1,5 @@
 #include "screen.h"
+#include "cursor.h"
 #include <stdbool.h>
 
 #define VIDEO_ADDRESS 0xb8000
@@ -29,6 +30,8 @@ void printf(char strtoPrint[], int color)
             *vmp++ = strtoPrint[i];
             *vmp = color;
             ++offset[0];
+            //offset must be flipped for cursor coords
+            set_cursor(offset[1], offset[0]);
         }
         if(offset[0] > 79){
             offset[0] = 0;
