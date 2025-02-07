@@ -31,8 +31,6 @@ void printChar(char charToPrint, int color)
 
 void printf(char strtoPrint[], int color)
 {
-    char* vmp = (char*) VIDEO_ADDRESS;
-    vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
     for(int i = 0; strtoPrint[i] != 0; i++){
         printChar(strtoPrint[i], color);
     }
