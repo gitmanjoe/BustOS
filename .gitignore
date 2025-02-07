@@ -236,7 +236,6 @@ _pkginfo.txt
 kernel.bin
 bootloader.bin
 kernel.o
-*.bat
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
