@@ -1,1 +1,1 @@
-void printChar (char charToPrint, int color);
+void printString (string strtoPrint, int color);
