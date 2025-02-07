@@ -10,6 +10,11 @@
 *.userosscache
 *.sln.docstates
 
+#Property of JX
+kernel.bin
+bootloader.bin
+*.o
+
 #Compiled project binaries
 [Rr]eleases/
 [Bb]ust[Oo][Ss].bin
@@ -231,11 +236,6 @@ _pkginfo.txt
 *.appx
 *.appxbundle
 *.appxupload
-
-#Property of JX
-kernel.bin
-bootloader.bin
-*.o
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
