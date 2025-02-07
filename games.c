@@ -18,7 +18,7 @@ void cowsay(char strToCow[], int color)
     char dash[]
     for(int i = strLen - 1; i >= 0; i--)
     {
-        dash[i] = '_';
+        dash[i] = '-';
     }
 
     printf("  ", color);
