@@ -1,1 +1,1 @@
-static void printChar (char charToPrint int color)
+void printChar (char charToPrint, int color);
