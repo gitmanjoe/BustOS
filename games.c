@@ -3,19 +3,19 @@
 
 void cowsay(char strToCow[], int color)
 {
-    strLen = 0;
+    int strLen = 0;
     for(int i = 0; strToCow[i] = 0; i++)
     {
         strLen++;
     }
 
-    char udsc[]
+    char udsc[32];
     for(int i = strLen - 1; i >= 0; i--)
     {
         udsc[i] = '_';
     }
 
-    char dash[]
+    char dash[32];
     for(int i = strLen - 1; i >= 0; i--)
     {
         dash[i] = '-';
@@ -23,7 +23,7 @@ void cowsay(char strToCow[], int color)
 
     printf("  ", color);
     printf(udsc, color);
-    printf("\n"), color;
+    printf("\n", color);
     printf("< ", color);
     printf(strToCow, color);
     printf("  ", color);

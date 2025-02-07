@@ -5,6 +5,7 @@
 #define NEW_LINE_HEX 0xA0
 
 int offset[] = {0,0};
+void crlf();
 
 void printChar(char charToPrint, int color)
 {
