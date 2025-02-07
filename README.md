@@ -8,6 +8,7 @@ This is our attempt at making an operating system from scratch.
 - Filesystem
 - Vga Graphics
 ## Implemented Features in Order From Newest to Oldest
+- Print text to vga display
 - Cowsay
 - Able to code in C  
 - 32 bit real mode  
