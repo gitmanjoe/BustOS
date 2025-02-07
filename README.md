@@ -5,10 +5,10 @@ This is our attempt at making an operating system from scratch.
 - Receive Input From Keyboard
 - Able to type text on screen
 - Receive input from keyboard and return output
-- Able to code in C
 - Shell
 - Cowsay
 ## Implemented Features in Order From Newest to Oldest
+- Able to code in C  
 - 32 bit real mode  
 - More than 1 sector  
 - Welcome message  
