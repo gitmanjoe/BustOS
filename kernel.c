@@ -1,11 +1,10 @@
-#define TEXT_COLOUR 0xf0
+#define TEXT_COLOUR 0x0f
 #include <stdbool.h>
 #include "screen.h"
 
 void kernel() {
-    //clear_screen(TEXT_COLOUR);
-    char sigma[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    clear_screen(0x0f);
+    char sigma[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
     printf(sigma, TEXT_COLOUR);
-    //printf(sigma1, TEXT_COLOUR);
     while (true) {}
 }

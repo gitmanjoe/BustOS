@@ -6,34 +6,51 @@
 
 int offset[] = {0,0};
 
-void printChar(char charToPrint, int color, char* vmp)
+void printChar(char charToPrint, int color)
 {
-    //*vmp++ = charToPrint;
-    //*vmp++ = color;
+    char* vmp = (char*) VIDEO_ADDRESS;
+    vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
+    *vmp++ = charToPrint;
+    *vmp++ = color;
 }
 
 void printf(char strtoPrint[], int color)
 {
     char* vmp = (char*) VIDEO_ADDRESS;
-    vmp += NEW_LINE_HEX;
+    vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
     for(int i = 0; strtoPrint[i] != 0; i++){
-        *vmp++ = strtoPrint[i];
-        *vmp++ = color;
+        char* vmp = (char*) VIDEO_ADDRESS;
+        vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
+        if(strtoPrint[i] == '\n'){
+            crlf();
+        }
+        else{
+            *vmp++ = strtoPrint[i];
+            *vmp = color;
+            ++offset[0];
+        }
+        if(offset[0] > 79){
+            offset[0] = 0;
+            offset[1]++;
+        }
     }
-    //crlf();
 }
 
 void crlf()
 {
     offset[0] = 0;
-    offset[1] = offset[1] + 0xA0;
+    offset[1] = ++offset[1];
 }
 
 void clear_screen(int color){
     char* vmp = (char*) VIDEO_ADDRESS;
-    vmp += NEW_LINE_HEX;
     for(int i = 0; i <= 80 * 25 * 2; i++){
         *vmp++ = ' ';
         *vmp++ = color;
     }
+}
+
+void set_offset(int x, int y){
+    offset[0] = x;
+    offset[1] = y;
 }

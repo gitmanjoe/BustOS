@@ -1,4 +1,4 @@
 void printf (char strtoPrint[], int color);
-void crlf ();
-void printChar(char charToPrint, int color, char *vmp);
+void printChar(char charToPrint, int color);
 void clear_screen(int color);
+void set_offset(int x, int y);
