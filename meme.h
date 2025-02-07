@@ -1,1 +1,1 @@
-void cowsay(char strToCow[]);
+void cowsay(char strToCow[], int color);

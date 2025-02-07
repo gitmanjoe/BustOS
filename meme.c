@@ -1,8 +1,7 @@
-#define WHITETEXTBLACKBG 0x0f
 #include "cowsay.h"
 #include "screen.h"
 
-void cowsay(char strToCow[])
+void cowsay(char strToCow[], int color)
 {
     strLen = 0;
     for(int i = 0; strToCow[i] = 0; i++)
@@ -22,16 +21,16 @@ void cowsay(char strToCow[])
         dash[i] = '_';
     }
 
-    printf("  ", WHITETEXTBLACKBG);
-    printf(udsc, WHITETEXTBLACKBG);
-    printf("\n"), WHITETEXTBLACKBG;
-    printf("< ", WHITETEXTBLACKBG);
-    printf(strToCow, WHITETEXTBLACKBG);
-    printf("  ", WHITETEXTBLACKBG);
-    printf(dash, WHITETEXTBLACKBG);
-    printf("         \\   ^__^ \n", WHITETEXTBLACKBG);
-    printf("          \\  (oo)\\_______\n", WHITETEXTBLACKBG);
-    printf("             (__)\\       )\\/\\\\", WHITETEXTBLACKBG);
-    printf("                 ||----w |\n", WHITETEXTBLACKBG);
-    printf("                 ||     ||\n", WHITETEXTBLACKBG);
+    printf("  ", color);
+    printf(udsc, color);
+    printf("\n"), color;
+    printf("< ", color);
+    printf(strToCow, color);
+    printf("  ", color);
+    printf(dash, color);
+    printf("         \\   ^__^ \n", color);
+    printf("          \\  (oo)\\_______\n", color);
+    printf("             (__)\\       )\\/\\\\", color);
+    printf("                 ||----w |\n", color);
+    printf("                 ||     ||\n", color);
 }
