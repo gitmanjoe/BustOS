@@ -1,0 +1,1 @@
+void cowsay(char strToCow[]);
