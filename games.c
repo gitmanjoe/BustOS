@@ -5,7 +5,7 @@ void cowsay(char strToCow[], int color)
 {
     //Getting the length of the string
     int strLen = 0;
-    for(int i = 0; strToCow[i] = 0; i++)
+    for(int i = 0; strToCow[i] != 0; i++)
     {
         strLen++;
     }
@@ -28,7 +28,7 @@ void cowsay(char strToCow[], int color)
     char twoSpaces[] = "  ";
     char newLine[] = "\n";
     char lessThanSpace[] = "< ";
-    char greaterThanSpace[] = "> ";
+    char greaterThanSpace[] = " >";
     char cow1[] = "         \\   ^__^ \n";
     char cow2[] = "          \\  (oo)\\_______\n";
     char cow3[] = "             (__)\\       )\\/\\\\\n";
