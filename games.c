@@ -1,11 +1,11 @@
 #include "games.h"
 #include "screen.h"
 
-void cowsay(char strToCow[], int color)
+void cowsay(char strToSay[], int color)
 {
     //Get the length of the string
     int strLen = 0;
-    for(int i = 0; strToCow[i] != 0; i++)
+    for(int i = 0; strToSay[i] != 0; i++)
     {
         strLen++;
     }
@@ -40,7 +40,7 @@ void cowsay(char strToCow[], int color)
     printf(udsc, color);
     printf(newLine, color);
     printf(lessThanSpace, color);
-    printf(strToCow, color);
+    printf(strToSay, color);
     printf(greaterThanSpace, color);
     printf(newLine, color);
     printf(twoSpaces, color);
