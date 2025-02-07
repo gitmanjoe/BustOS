@@ -6,9 +6,9 @@ This is our attempt at making an operating system from scratch.
 - Receive input from keyboard and return output
 - Shell
 - Filesystem
-- Cowsay
 - Vga Graphics
 ## Implemented Features in Order From Newest to Oldest
+- Cowsay
 - Able to code in C  
 - 32 bit real mode  
 - More than 1 sector  
