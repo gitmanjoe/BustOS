@@ -3,8 +3,6 @@
 
 char* video_memory = (char*) 0xb8000;
 
-void printChar(char charToPrint, int color);
-
 void printChar(char charToPrint, int color)
 {
     *video_memory++ = charToPrint;
@@ -16,7 +14,7 @@ void printf(char strtoPrint[], int color)
     for(int i = 0; strtoPrint[i] != 0; i++){
         printChar(strtoPrint[i], color);
     }
-    crlf();
+    //crlf();
 }
 
 void crlf()

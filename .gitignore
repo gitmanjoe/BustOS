@@ -235,7 +235,7 @@ _pkginfo.txt
 #Property of JX
 kernel.bin
 bootloader.bin
-kernel.o
+*.o
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
