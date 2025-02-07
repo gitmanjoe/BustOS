@@ -2,8 +2,6 @@
 bits 16
 org 0x7c00
 
-mov bx, Real_Msg
-call print_string
 mov [ BOOT_DRIVE ], dl ; BIOS stores our boot drive in dl
 mov ah, 0x02           ; BIOS read sectors function
 mov al, 128            ; Number of sectors to read
@@ -22,45 +20,12 @@ jmp 0x08:init_pm ; Selector 0x08 points to the code segment
 
 ; Data
 BOOT_DRIVE : db 0
-Real_Msg:
-db 'BustOS is in 16 bit Real Mode',13,10,0 
-MSG_PROT_MODE:
-db "32-bit Protected Mode Initialized", 0
 
-print_char:
-    mov ah,0x0e ; BIOS teletype output
-    push bp
-    int 0x10 ; print the character in al
-    pop bp
-    ret
-
-print_string:
-    pusha ; save register ax
-    mov ah,0x0e ; BIOS teletype output
-
-print_string_loop:
-    mov al,[bx] 
-    cmp al,0 ; end of string?
-    je done ; jump to done
-    call print_char ; print char to screen
-    add bx,1 ; Increment BX to the next char in string.
-    jmp print_string_loop ; loop to print the next char.
-
-done:
-    popa ; restore register ax
-    ret
-
-print_crlf:
-    mov al,13
-    call print_char
-    mov al,10
-    call print_char
-    ret
 ; GDT
 gdt_start :
-    dq 0x0000000000000000
-    dq 0x00CF9A000000FFFF
-    dq 0x00CF92000000FFFF
+    dq 0x0000000000000000 ;null
+    dq 0x00CF9A000000FFFF ;code
+    dq 0x00CF92000000FFFF ;data
 gdt_end :
 gdt_descriptor :
     dw gdt_end - gdt_start - 1 ; Size of our GDT 
