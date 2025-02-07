@@ -3,21 +3,21 @@
 
 void cowsay(char strToCow[], int color)
 {
-    //Getting the length of the string
+    //Get the length of the string
     int strLen = 0;
     for(int i = 0; strToCow[i] != 0; i++)
     {
         strLen++;
     }
 
-    //Getting the line of _'s on top
+    //Get the line of _'s on top
     char udsc[32];
     for(int i = strLen - 1; i >= 0; i--)
     {
         udsc[i] = '_';
     }
 
-    //Getting the line of -'s underneath
+    //Get the line of -'s underneath
     char dash[32];
     for(int i = strLen - 1; i >= 0; i--)
     {
