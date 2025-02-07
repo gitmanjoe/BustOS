@@ -26,7 +26,7 @@ void cowsay(char strToCow[], int color)
 
     //Variable initalization
     char twoSpaces[] = "  ";
-    char newLine[] = "\n"
+    char newLine[] = "\n";
     char lessThanSpace[] = "< ";
     char greaterThanSpace[] = "> ";
     char cow1[] = "         \\   ^__^ \n";
