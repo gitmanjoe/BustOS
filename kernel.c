@@ -3,11 +3,10 @@
 #include "screen.h"
 
 void kernel() {
-    char letter[] = "Bs";
-    char s = 's';
-    printChar(s, TEXT_COLOUR);
-    //printf (letter, TEXT_COLOUR);
-    //printChar(letter[0], TEXT_COLOUR);
-    //printChar(letter[1], TEXT_COLOUR);
+    clear_screen(TEXT_COLOUR);
+    char sigma[] = "Hello, World";
+    char sigma1[] = "die, sigma";
+    //printf(sigma, TEXT_COLOUR);
+    //printf(sigma1, TEXT_COLOUR);
     while (true) {}
 }

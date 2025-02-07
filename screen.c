@@ -1,24 +1,35 @@
 #include "screen.h"
 #include <stdbool.h>
 
-char* video_memory = (char*) 0xb8000;
+#define VIDEO_ADDRESS 0xb8000
+#define NEW_LINE_HEX 0xA0
 
-void printChar(char charToPrint, int color)
+void printChar(char charToPrint, int color, char* vmp)
 {
-    *video_memory++ = charToPrint;
-    *video_memory++ = color;
+    //*vmp++ = charToPrint;
+    //*vmp++ = color;
 }
 
 void printf(char strtoPrint[], int color)
 {
+    char* vmp = (char*) VIDEO_ADDRESS;
     for(int i = 0; strtoPrint[i] != 0; i++){
-        printChar(strtoPrint[i], color);
+        *vmp++ = strtoPrint[i];
+        *vmp++ = color;
     }
     //crlf();
 }
 
 void crlf()
 {
-    printChar(0x0d, 0x00);
-    printChar(0x0a, 0x00);
+    
+}
+
+void clear_screen(int color){
+    char* vmp = (char*) VIDEO_ADDRESS;
+    vmp += 0xA0;
+    for(int i = 0; i <= 80 * 25 * 2; i++){
+        *vmp++ = ' ';
+        *vmp++ = color;
+    }
 }
