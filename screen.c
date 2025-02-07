@@ -10,7 +10,9 @@ void printChar (char charToPrint, int color)
     *video_memory++ = color;
 }
 
-void printString (string strtoPrint, int color)
+void printf (char strtoPrint[], int color)
 {
-    while
+    for(int i = 0; strtoPrint[i] != 0; i++){
+
+    }
 }
