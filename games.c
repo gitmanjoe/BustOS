@@ -31,7 +31,7 @@ void cowsay(char strToCow[], int color)
     char greaterThanSpace[] = "> ";
     char cow1[] = "         \\   ^__^ \n";
     char cow2[] = "          \\  (oo)\\_______\n";
-    char cow3[] = "             (__)\\       )\\/\\\\";
+    char cow3[] = "             (__)\\       )\\/\\\\\n";
     char cow4[] = "                 ||----w |\n";
     char cow5[] = "                 ||     ||\n";
 
