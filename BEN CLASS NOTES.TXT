@@ -2,3 +2,4 @@
 Érosion éolienne
 Érosion hydrique
 Glacier = grande masse de glace qui ce déplace lentement sur le territoire
+La glace en dessous est bleue et plus vieille et la glace per dessus est blanche et plus nouvelle
