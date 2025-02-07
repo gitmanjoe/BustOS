@@ -112,3 +112,4 @@ void tuxsay(char strToSay[], int color)
     printf(tux8, color);
     printf(tux9, color);
 }
+
