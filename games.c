@@ -89,7 +89,7 @@ void tuxsay(char strToSay[], int color)
     char tux6[] = "      //   \\ \\\n";
     char tux7[] = "     (|     | )\n";
     char tux8[] = "    /'\\_   _/`\\\n";
-    char tux9[] = "    \\___)|(___/\n";
+    char tux9[] = "    \\___)=(___/\n";
 
     //PRINT TUX!!!!!
     printf(twoSpaces, color);
