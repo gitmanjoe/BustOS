@@ -8,7 +8,7 @@ void kernel() {
     clear_screen(0x0f);
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
     char moo[] = "Moo";
-    char tux[] = "bustos is better than linux";
+    char tux[] = "BustOS is better than Linux";
     printf(welcome, TEXT_COLOUR);
     cowsay(moo, TEXT_COLOUR);
     tuxsay(tux, TEXT_COLOUR);
