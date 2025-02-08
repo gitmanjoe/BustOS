@@ -7,4 +7,5 @@ gcc -m32 -ffreestanding -c ports.c -o ports.o
 ld -T NUL -mi386pe -o kernel.tmp -Ttext 0x7e00 kernel.o screen.o games.o cursor.o ports.o
 objcopy -O binary -j .text kernel.tmp kernel.bin
 copy /b bootloader.bin+kernel.bin+padding.bin BustOS.img
+rm *.o
 "C:\Program Files\qemu\qemu-system-x86_64.exe" BustOS.img
