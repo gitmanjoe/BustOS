@@ -10,6 +10,7 @@ This is our attempt at making an operating system from scratch.
 ## Implemented Features in Order From Newest to Oldest
 - Print text to vga display
 - Cowsay
+- Tuxsay
 - Able to code in C  
 - 32 bit real mode  
 - More than 1 sector  
