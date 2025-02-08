@@ -49,4 +49,4 @@ dw 0xaa55
 [ bits 32]
 BEGIN_PM :
 
-times 2048 -( $ - $$ ) db 0
+;times 2048 -( $ - $$ ) db 0

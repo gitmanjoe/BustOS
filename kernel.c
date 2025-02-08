@@ -10,8 +10,6 @@ void kernel() {
     char moo[] = "Moo";
     char tux[] = "BustOS is better than Linux";
     printf(welcome, TEXT_COLOUR);
-    cowsay(moo, TEXT_COLOUR);
-    tuxsay(tux, TEXT_COLOUR);
     //set_cursor(0, 41);
     while (true) {}
 }

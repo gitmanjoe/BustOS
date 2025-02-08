@@ -12,31 +12,27 @@ void printChar(char charToPrint, int color)
 {
     char* vmp = (char*) VIDEO_ADDRESS;
     vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
-    *vmp++ = charToPrint;
-    *vmp++ = color;
+    
+    if(charToPrint == '\n'){
+        crlf();
+    }
+    else{
+        *vmp++ = charToPrint;
+        *vmp = color;
+        ++offset[0];
+        //offset must be flipped for cursor coords
+        set_cursor(offset[1], offset[0]);
+    }
+    if(offset[0] > 79){
+        offset[0] = 0;
+        offset[1]++;
+    }
 }
 
 void printf(char strtoPrint[], int color)
 {
-    char* vmp = (char*) VIDEO_ADDRESS;
-    vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
     for(int i = 0; strtoPrint[i] != 0; i++){
-        char* vmp = (char*) VIDEO_ADDRESS;
-        vmp = vmp + offset[0] * 2 + offset[1] * NEW_LINE_HEX;
-        if(strtoPrint[i] == '\n'){
-            crlf();
-        }
-        else{
-            *vmp++ = strtoPrint[i];
-            *vmp = color;
-            ++offset[0];
-            //offset must be flipped for cursor coords
-            set_cursor(offset[1], offset[0]);
-        }
-        if(offset[0] > 79){
-            offset[0] = 0;
-            offset[1]++;
-        }
+        printChar(strtoPrint[i], color);
     }
 }
 
