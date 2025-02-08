@@ -14,10 +14,14 @@
 kernel.bin
 bootloader.bin
 *.o
+.vscode/
+BustOS.img
+
 
 #Compiled project binaries
 [Rr]eleases/
 [Bb]ust[Oo][Ss].bin
+[Bb]ust[Oo][Ss].img
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
