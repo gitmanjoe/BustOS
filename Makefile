@@ -7,7 +7,7 @@ CFLAGS = -m32 -ffreestanding
 ASMFLAGS = -f bin
 
 # Define the source and object files
-SOURCES = kernel.c screen.c games.c cursor.c ports.c
+SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c
 OBJECTS = $(SOURCES:.c=.o)
 KERNEL_BIN = kernel.bin
 
