@@ -1,4 +1,4 @@
-#define TEXT_COLOUR 0xaa
+#define TEXT_COLOUR 0x0a
 #include <stdbool.h>
 #include "games.h"
 #include "screen.h"
