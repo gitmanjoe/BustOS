@@ -1,6 +1,6 @@
 #include "isr.h"
 #include "idt.h"
-#include "../drivers/screen.h"
+#include "../screen.h"
 #include "../tools.h"
 
 /* Can't do this with a loop because we need the address
