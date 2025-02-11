@@ -1,7 +1,7 @@
 #include "games.h"
 #include "screen.h"
 
-void cowsay(char strToSay[], int color)
+void cowsay(char strToSay[])
 {
     //Get the length of the string
     int strLen = 0;
@@ -36,24 +36,24 @@ void cowsay(char strToSay[], int color)
     char cow5[] = "                 ||     ||\n";
 
     //PRINT THE COW!!!!!
-    printf(twoSpaces, color);
-    printf(udsc, color);
-    printf(newLine, color);
-    printf(lessThanSpace, color);
-    printf(strToSay, color);
-    printf(greaterThanSpace, color);
-    printf(newLine, color);
-    printf(twoSpaces, color);
-    printf(dash, color);
-    printf(newLine, color);
-    printf(cow1, color);
-    printf(cow2, color);
-    printf(cow3, color);
-    printf(cow4, color);
-    printf(cow5, color);
+    printf(twoSpaces);
+    printf(udsc);
+    printf(newLine);
+    printf(lessThanSpace);
+    printf(strToSay);
+    printf(greaterThanSpace);
+    printf(newLine);
+    printf(twoSpaces);
+    printf(dash);
+    printf(newLine);
+    printf(cow1);
+    printf(cow2);
+    printf(cow3);
+    printf(cow4);
+    printf(cow5);
 }
 
-void tuxsay(char strToSay[], int color)
+void tuxsay(char strToSay[])
 {
     //Get the length of the string
     int strLen = 0;
@@ -92,24 +92,24 @@ void tuxsay(char strToSay[], int color)
     char tux9[] = "    \\___)=(___/\n";
 
     //PRINT TUX!!!!!
-    printf(twoSpaces, color);
-    printf(udsc, color);
-    printf(newLine, color);
-    printf(lessThanSpace, color);
-    printf(strToSay, color);
-    printf(greaterThanSpace, color);
-    printf(newLine, color);
-    printf(twoSpaces, color);
-    printf(dash, color);
-    printf(newLine, color);
-    printf(tux1, color);
-    printf(tux2, color);
-    printf(tux3, color);
-    printf(tux4, color);
-    printf(tux5, color);
-    printf(tux6, color);
-    printf(tux7, color);
-    printf(tux8, color);
-    printf(tux9, color);
+    printf(twoSpaces);
+    printf(udsc);
+    printf(newLine);
+    printf(lessThanSpace);
+    printf(strToSay);
+    printf(greaterThanSpace);
+    printf(newLine);
+    printf(twoSpaces);
+    printf(dash);
+    printf(newLine);
+    printf(tux1);
+    printf(tux2);
+    printf(tux3);
+    printf(tux4);
+    printf(tux5);
+    printf(tux6);
+    printf(tux7);
+    printf(tux8);
+    printf(tux9);
 }
 

@@ -1,3 +1,3 @@
-void cowsay(char strToSay[], int color);
-void tuxsay(char strToSay[], int color);
+void cowsay(char strToSay[]);
+void tuxsay(char strToSay[]);
 
