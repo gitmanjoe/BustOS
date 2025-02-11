@@ -13,7 +13,7 @@ void kernel()
     char moo[] = "I love BBC";
     char tux[] = "BustOS is better than Linux";
     printf(welcome, TEXT_COLOUR);
-    cowsay(moo, TEXT_COLOUR);
+    cowsay(tux, TEXT_COLOUR);
     //set_cursor(0, 41);
     while (true) {}
 }
