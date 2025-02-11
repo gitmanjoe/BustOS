@@ -1,4 +1,4 @@
-#define TEXT_COLOUR 0x0a
+#define TEXT_COLOUR 0xaa
 #include <stdbool.h>
 #include "games.h"
 #include "screen.h"
@@ -13,7 +13,7 @@ void kernel()
     char moo[] = "I love BBC";
     char tux[] = "BustOS is better than Linux";
     printf(welcome, TEXT_COLOUR);
-    cowsay(tux, TEXT_COLOUR);
-    //set_cursor(0, 41);
+    cowsay(moo, TEXT_COLOUR);
+    set_cursor(69, 69);
     while (true) {}
 }
