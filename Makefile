@@ -11,7 +11,7 @@ ASMFLAGS = -f bin
 LDFLAGS = -T NUL -mi386pe -Ttext 0x7e00
 
 # Source and Object Files
-C_SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c
+C_SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c interrupts/idt.c interrupts/isr.c
 C_OBJECTS = $(C_SOURCES:.c=.o)
 
 # Output Files
