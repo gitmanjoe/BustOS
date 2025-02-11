@@ -11,9 +11,10 @@ void kernel()
     print_logo(TEXT_COLOUR);
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
     char moo[] = "I love BBC";
-    char tux[] = "BustOS is better than Linux";
+    char tux[] = "Linux Sucks";
     printf(welcome, TEXT_COLOUR);
     cowsay(moo, TEXT_COLOUR);
+    tuxsay(tux, TEXT_COLOUR);
     set_cursor(69, 69);
     while (true) {}
 }
