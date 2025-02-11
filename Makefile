@@ -36,8 +36,8 @@ $(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN)
 
 # Clean up object files, temporary files, and binaries
 clean:
-	rm -f $(OBJECTS) kernel.tmp $(BOOTLOADER_BIN) $(KERNEL_BIN) $(OS_IMAGE)
+	rm -f $(OBJECTS) kernel.tmp $(BOOTLOADER_BIN) $(KERNEL_BIN)
 
 # Run the OS in QEMU
-run: $(OS_IMAGE)
+run:
 	$(QEMU) $(OS_IMAGE)
