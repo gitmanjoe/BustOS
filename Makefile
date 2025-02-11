@@ -32,7 +32,7 @@ $(KERNEL_BIN): $(OBJECTS)
 
 # Create the final OS image
 $(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN)
-	copy /b $(BOOTLOADER_BIN)+$(KERNEL_BIN)+padding.bin $(OS_IMAGE)
+	cat $(BOOTLOADER_BIN) $(KERNEL_BIN) padding.bin > $(OS_IMAGE)
 
 # Clean up object files, temporary files, and binaries
 clean:
