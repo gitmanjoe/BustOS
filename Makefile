@@ -1,43 +1,48 @@
-# Define the compiler and assembler
+# Compiler and Assembler
 CC = gcc
 ASM = nasm
+LD = ld
+OBJCOPY = objcopy
 QEMU = "C:\\Program Files\\qemu\\qemu-system-x86_64.exe"
 
-# Define the flags for compiler and assembler
+# Flags
 CFLAGS = -m32 -ffreestanding
 ASMFLAGS = -f bin
+LDFLAGS = -T NUL -mi386pe -Ttext 0x7e00
 
-# Define the source and object files
-SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c
-OBJECTS = $(SOURCES:.c=.o)
-KERNEL_BIN = kernel.bin
+# Source and Object Files
+C_SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c
+C_OBJECTS = $(C_SOURCES:.c=.o)
+
+# Output Files
 BOOTLOADER_BIN = bootloader.bin
+KERNEL_BIN = kernel.bin
 OS_IMAGE = BustOS.img
 
-# Default target
+# Default Target
 all: $(OS_IMAGE)
 
-# Build bootloader
+# Assemble Bootloader
 $(BOOTLOADER_BIN): bootloader.asm
-	$(ASM) $(ASMFLAGS) bootloader.asm -o $(BOOTLOADER_BIN)
+	$(ASM) $(ASMFLAGS) $< -o $@
 
-# Compile C files to object files
-$(OBJECTS): %.o: %.c
+# Compile C Files
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Link object files to create kernel
-$(KERNEL_BIN): $(OBJECTS)
-	ld -T NUL -mi386pe -o kernel.tmp -Ttext 0x7e00 $(OBJECTS)
-	objcopy -O binary -j .text kernel.tmp $(KERNEL_BIN)
+# Link Kernel
+$(KERNEL_BIN): $(C_OBJECTS)
+	$(LD) $(LDFLAGS) -o kernel.tmp $(C_OBJECTS)
+	$(OBJCOPY) -O binary -j .text kernel.tmp $(KERNEL_BIN)
 
-# Create the final OS image
+# Create OS Image
 $(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN)
 	cat $(BOOTLOADER_BIN) $(KERNEL_BIN) padding.bin > $(OS_IMAGE)
 
-# Clean up object files, temporary files, and binaries
+# Clean Build Files
 clean:
 	rm -f $(OBJECTS) kernel.tmp $(BOOTLOADER_BIN) $(KERNEL_BIN)
 
-# Run the OS in QEMU
-run:
+# Run in QEMU
+run: $(OS_IMAGE)
 	$(QEMU) $(OS_IMAGE)
