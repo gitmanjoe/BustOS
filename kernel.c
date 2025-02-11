@@ -4,11 +4,9 @@
 #include "screen.h"
 #include "cursor.h"
 #include "tools.h"
-#include "idt_pic.h"
 
-void kernel() {
-    setup_idt_and_pic();
-    enable_interrupts();
+void kernel() 
+{
     clear_screen(0x0f);
     print_logo();
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
