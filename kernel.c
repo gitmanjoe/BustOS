@@ -14,8 +14,8 @@ void kernel()
     char moo[] = "I love BBC";
     char tux[] = "Linux Sucks";
     printf(welcome);
-    cowsay(moo);
-    tuxsay(tux);
+    //cowsay(moo);
+    //tuxsay(tux);
     set_cursor(69, 69);
     while (true) {}
 }
