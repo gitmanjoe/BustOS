@@ -7,10 +7,9 @@
 
 void kernel() 
 {
-    set_colour(0x0f);
+    set_colour(TEXT_COLOUR);
     clear_screen();
     print_logo();
-    set_colour(TEXT_COLOUR);
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
     char moo[] = "I love BBC";
     char tux[] = "Linux Sucks";

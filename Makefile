@@ -1,18 +1,22 @@
 # Compiler and Assembler
 CC = gcc
 ASM = nasm
-LD = ld
+LD = C:\\i686-elf-tools-windows\\bin\\i686-elf-ld
 OBJCOPY = objcopy
 QEMU = "C:\\Program Files\\qemu\\qemu-system-x86_64.exe"
 
 # Flags
 CFLAGS = -m32 -ffreestanding
-ASMFLAGS = -f bin
-LDFLAGS = -T NUL -mi386pe -Ttext 0x7e00
+ASMFLAGS = -f elf
+LDFLAGS = -m elf_i386 -Ttext 0x7e00
 
-# Source and Object Files
+# Source Files
 C_SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c interrupts/idt.c interrupts/isr.c
+ASM_SOURCES = interrupts/interrupt.asm
+
+# Object Files
 C_OBJECTS = $(C_SOURCES:.c=.o)
+ASM_OBJECTS = $(ASM_SOURCES:.asm=.o)
 
 # Output Files
 BOOTLOADER_BIN = bootloader.bin
@@ -24,15 +28,19 @@ all: $(OS_IMAGE)
 
 # Assemble Bootloader
 $(BOOTLOADER_BIN): bootloader.asm
-	$(ASM) $(ASMFLAGS) $< -o $@
+	$(ASM) -f bin $< -o $@
 
 # Compile C Files
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Compile Assembly Files
+%.o: %.asm
+	$(ASM) $(ASMFLAGS) $< -o $@
+
 # Link Kernel
-$(KERNEL_BIN): $(C_OBJECTS)
-	$(LD) $(LDFLAGS) -o kernel.tmp $(C_OBJECTS)
+$(KERNEL_BIN): $(C_OBJECTS) $(ASM_OBJECTS)
+	$(LD) $(LDFLAGS) -o kernel.tmp $(C_OBJECTS) $(ASM_OBJECTS)
 	$(OBJCOPY) -O binary -j .text kernel.tmp $(KERNEL_BIN)
 
 # Create OS Image
@@ -41,7 +49,7 @@ $(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN)
 
 # Clean Build Files
 clean:
-	rm -f $(OBJECTS) kernel.tmp $(BOOTLOADER_BIN) $(KERNEL_BIN)
+	rm -f $(C_OBJECTS) $(ASM_OBJECTS) kernel.tmp $(BOOTLOADER_BIN) $(KERNEL_BIN)
 
 # Run in QEMU
 run: $(OS_IMAGE)

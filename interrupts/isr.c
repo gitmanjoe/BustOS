@@ -82,11 +82,11 @@ char *exception_messages[] = {
 };
 
 void isr_handler(registers_t r) {
-    kprint("received interrupt: ");
+    printf("received interrupt: ");
     char s[3];
     int_to_ascii(r.int_no, s);
-    kprint(s);
-    kprint("\n");
-    kprint(exception_messages[r.int_no]);
-    kprint("\n");
+    printf(s);
+    printf("\n");
+    printf(exception_messages[r.int_no]);
+    printf("\n");
 }
