@@ -3,7 +3,7 @@
 
 void cowsay(char strToSay[])
 {
-    //Get the length of the string
+    //Get the length of the string 
     int strLen = 0;
     for(int i = 0; strToSay[i] != 0; i++)
     {
