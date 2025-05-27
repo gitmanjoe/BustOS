@@ -38,7 +38,7 @@ void printf(char strtoPrint[])
 }
 
 void print_backspace() {
- printf("\b");
+    printf("\b");
 }
 
 void crlf()

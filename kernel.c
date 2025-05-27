@@ -21,16 +21,16 @@ void kernel()
 }
 
 void execute_command(char* input) {
- // exit command
- char exitmsg[] = "EXIT";
-if (compare_string(input, exitmsg) == 0) {
-char msg[] = "Exit\n";
-printf(msg);
-asm volatile("hlt"); // halt cpu
-}
-char msg[] = "\ncommand: ";
-printf(msg);
-printf(input);
-char prompt[] = "\nBustOS> ";
-printf(prompt);
+    // exit command
+    char exitmsg[] = "EXIT";
+    if (compare_string(input, exitmsg) == 0) {
+        char msg[] = "Exit\n";
+        printf(msg);
+        asm volatile("hlt"); // halt cpu
+    }
+    char msg[] = "\ncommand: ";
+    printf(msg);
+    printf(input);
+    char prompt[] = "\nBustOS> ";
+    printf(prompt);
 }
