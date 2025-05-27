@@ -35,6 +35,6 @@ asm volatile("hlt"); // halt cpu
 char msg[] = "\ncommand: ";
 printf(msg);
 printf(input);
-char prompt[] = "\nOSX> ";
+char prompt[] = "\nBustOS> ";
 printf(prompt);
 }
