@@ -14,6 +14,6 @@ ld -T NUL -m i386pe -o kernel.tmp -Ttext 0x7e00 kernel.o ports.o mem.o screen.o 
 keyboard.o isr.o idt.o interrupts.o
 objcopy -O binary -j .text kernel.tmp kernel.bin
 rem "C:\Program Files\nasm\ndisasm" -b 32 kernel.bin
-copy /b bootloader.bin+kernel.bin+padding.bin osximage.img
-rem "C:\Program Files\nasm\ndisasm" -b 32 osximage.img
-"C:\Program Files\qemu\qemu-system-x86_64.exe" osximage.img
+copy /b bootloader.bin+kernel.bin+padding.bin BustOS.img
+rem "C:\Program Files\nasm\ndisasm" -b 32 BustOS.img
+"C:\Program Files\qemu\qemu-system-x86_64.exe" BustOS.img
