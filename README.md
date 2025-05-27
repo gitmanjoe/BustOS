@@ -8,7 +8,7 @@ This is our attempt at making an Operating System from scratch.
 - Shell
 - Filesystem
 ## Implemented Features in Order From Newest to Oldest
-- Print text to VGS display
+- Print text to VGA display
 - Cowsay
 - Tuxsay
 - Able to code in C  
