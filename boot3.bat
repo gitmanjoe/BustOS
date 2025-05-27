@@ -3,7 +3,7 @@ rem boot3.bat
 gcc -m32 -ffreestanding -c kernel.c -o kernel.o
 rem objdump -d kernel.o
 gcc -m32 -ffreestanding -c ports.c -o ports.o
-gcc -m32 -ffreestanding -c mem.c -o men.o
+gcc -m32 -ffreestanding -c mem.c -o mem.o
 gcc -m32 -ffreestanding -c screen.c -o screen.o
 gcc -m32 -ffreestanding -c strings.c -o strings.o
 gcc -m32 -ffreestanding -c keyboard.c -o keyboard.o
