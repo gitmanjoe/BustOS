@@ -11,12 +11,28 @@ void kernel()
     clear_screen();
     print_logo();
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
-    char moo[] = "I love BBC";
-    char tux[] = "Linux Sucks";
     printf(welcome);
+
+    char msg1[] = "Installing interrupt service routines (ISRs).\n";
+    printf(msg1);
+    isr_install();
+
+    char msg2[] = "Enabling external interrupts.\n";
+    printf(msg2);
+    asm volatile("sti");
+
+    char msg3[] = "Initializing keyboard (IRQ 1).\n";
+    printf(msg3);
+    init_keyboard();
+
+    char prompt[] = "\nBustOS> ";
+    printf(prompt);
+    
+    //char moo[] = "I love BBC";
+    //char tux[] = "Linux Sucks";
     //cowsay(moo);
     //tuxsay(tux);
-    set_cursor(69, 69);
+
     while (true) {}
 }
 
