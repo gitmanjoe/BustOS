@@ -124,15 +124,15 @@ void isr_handler(registers_t* r) {
     msg22, msg23, msg24, msg25, msg26, msg27, msg28, msg29, msg30, msg31};
     // report isr interrupt
     char msg[] = "received ISR interrupt: ";
-    print_string(msg);
+    printf(msg);
     char s[32];
     // print interript number
     int_to_string(r->int_no, s);
-    print_string(s);
+    printf(s);
     print_nl();
 
     // print interrupt message
-    print_string(messages[r->int_no]);
+    printf(messages[r->int_no]);
     print_nl();
 }
 // register isr handler
@@ -142,13 +142,13 @@ void register_interrupt_handler(unsigned char n, isr_t handler) {
 // irq handler
 void irq_handler(registers_t *r) {
     //char msg[] = "received IRQ interrupt: ";
-    //print_string(msg);
+    //printf(msg);
 
     // Handle the interrupt
     if (interrupt_handlers[r->int_no] !=0 && r->int_no > 32) {
     //char text[20];
     //int_to_string(r->int_no, text);
-    //print_string(text);
+    //printf(text);
     isr_t handler = interrupt_handlers[r->int_no];
     handler(r);
     }
