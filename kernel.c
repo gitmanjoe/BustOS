@@ -7,20 +7,20 @@
 #include "isr.h"
 #include "keyboard.h"
 void kernel () {
-clear_screen();
-char message[] = "BustOS Kernel running in 32 bit protected mode";
-printf(message);
-char msg1[] = "Installing interrupt service routines (ISRs).\n";
-printf(msg1);
-isr_install();
-char msg2[] = "Enabling external interrupts.\n";
-printf(msg2);
-asm volatile("sti");
-char msg3[] = "Initializing keyboard (IRQ 1).\n";
-printf(msg3);
-init_keyboard();
-char prompt[] = "\nBustOS> ";
-printf(prompt);
+    clear_screen();
+    char message[] = "BustOS Kernel running in 32 bit protected mode";
+    printf(message);
+    char msg1[] = "Installing interrupt service routines (ISRs).\n";
+    printf(msg1);
+    isr_install();
+    char msg2[] = "Enabling external interrupts.\n";
+    printf(msg2);
+    asm volatile("sti");
+    char msg3[] = "Initializing keyboard (IRQ 1).\n";
+    printf(msg3);
+    init_keyboard();
+    char prompt[] = "\nBustOS> ";
+    printf(prompt);
 }
 // receive commands to execute
 void execute_command(char* input) {
