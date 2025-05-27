@@ -1,6 +1,7 @@
 // keyboard.c
 // handle keyboard
 #include "keyboard.h"
+#include "types.h"
 #include "screen.h"
 #include "strings.h"
 #include "isr.h"

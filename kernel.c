@@ -7,6 +7,7 @@
 #include "strings.h"
 #include "isr.h"
 #include "keyboard.h"
+#include "types.h"
 
 void kernel() 
 {
@@ -31,7 +32,7 @@ void kernel()
     char prompt[] = "\nBustOS> ";
     printf(prompt);
 
-    //char moo[] = "I love BBC";
+    //char moo[] = "BustOS";
     //char tux[] = "Linux Sucks";
     //cowsay(moo);
     //tuxsay(tux);
