@@ -2,6 +2,7 @@
 // interrupt description table setup IDT
 #include "idt.h"
 #include "strings.h"
+#include "types.h"
 idt_gate_t idt[IDT_ENTRIES]; // idt table
 idt_register_t idt_reg; // idt register
 // register interrupt handler
