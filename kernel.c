@@ -20,7 +20,7 @@ asm volatile("sti");
 char msg3[] = "Initializing keyboard (IRQ 1).\n";
 printf(msg3);
 init_keyboard();
- char prompt[] = "\nOSX> ";
+char prompt[] = "\nBustOS> ";
 printf(prompt);
 }
 // receive commands to execute
