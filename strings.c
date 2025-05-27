@@ -1,6 +1,7 @@
 // strings.c
 // string manipulation functions
 #include "strings.h"
+#include "types.h"
 // return string length
 int string_length(char s[]) {
     int i = 0;
