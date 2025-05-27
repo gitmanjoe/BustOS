@@ -1,0 +1,57 @@
+C:\Users\User\Documents\GitHub\BustOS>"C:\Program Files\nasm\nasm" -f bin bootloader.asm -o bootloader.bin 
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c kernel.c -o kernel.o 
+
+C:\Users\User\Documents\GitHub\BustOS>rem objdump -d kernel.o
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c ports.c -o ports.o 
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c mem.c -o men.o 
+cc1.exe: fatal error: mem.c: No such file or directory
+compilation terminated.
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c screen.c -o screen.o
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c strings.c -o strings.o 
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c keyboard.c -o keyboard.o 
+keyboard.c: In function 'keyboard_callback':
+keyboard.c:88:5: error: implicit declaration of function 'print_backspace' [-Wimplicit-function-declaration]
+   88 |     print_backspace();
+      |     ^~~~~~~~~~~~~~~
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c isr.c -o isr.o
+isr.c: In function 'isr_handler':
+isr.c:127:5: error: implicit declaration of function 'print_string' [-Wimplicit-function-declaration]
+  127 |     print_string(msg);
+      |     ^~~~~~~~~~~~
+isr.c:132:5: error: implicit declaration of function 'print_nl'; did you mean 'printf'? [-Wimplicit-function-declaration]
+  132 |     print_nl();
+      |     ^~~~~~~~
+      |     printf
+
+C:\Users\User\Documents\GitHub\BustOS>gcc -m32 -ffreestanding -c idt.c -o idt.o
+
+C:\Users\User\Documents\GitHub\BustOS>"C:\Program Files\nasm\nasm" -f elf interrupts.asm -o interrupts.o 
+
+C:\Users\User\Documents\GitHub\BustOS>ld -T NUL -m i386pe -o kernel.tmp -Ttext 0x7e00 kernel.o ports.o mem.o screen.o strings.o
+ld: cannot find mem.o: No such file or directory
+
+C:\Users\User\Documents\GitHub\BustOS>keyboard.o isr.o idt.o interrupts.o
+'keyboard.o' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\User\Documents\GitHub\BustOS>objcopy -O binary -j .text kernel.tmp kernel.bin
+objcopy: 'kernel.tmp': No such file
+
+C:\Users\User\Documents\GitHub\BustOS>rem "C:\Program Files\nasm\ndisasm" -b 32 kernel.bin
+
+C:\Users\User\Documents\GitHub\BustOS>copy /b bootloader.bin+kernel.bin+padding.bin osximage.img
+bootloader.bin
+padding.bin
+        1 file(s) copied.
+
+C:\Users\User\Documents\GitHub\BustOS>rem "C:\Program Files\nasm\ndisasm" -b 32 osximage.img
+
+C:\Users\User\Documents\GitHub\BustOS>"C:\Program Files\qemu\qemu-system-x86_64.exe" osximage.img
+The system cannot find the path specified.
