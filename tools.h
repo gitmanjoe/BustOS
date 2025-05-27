@@ -1,4 +1,4 @@
-#include "interrupts/types.h"
+#include "types.h"
 
 void print_logo();
 void enable_interrupts();
