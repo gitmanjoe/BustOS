@@ -129,11 +129,11 @@ void isr_handler(registers_t* r) {
     // print interript number
     int_to_string(r->int_no, s);
     printf(s);
-    print_nl();
+    crlf();
 
     // print interrupt message
     printf(messages[r->int_no]);
-    print_nl();
+    crlf();
 }
 // register isr handler
 void register_interrupt_handler(unsigned char n, isr_t handler) {
