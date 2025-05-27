@@ -37,6 +37,10 @@ void printf(char strtoPrint[])
     }
 }
 
+void print_backspace() {
+ printf(' ');
+}
+
 void crlf()
 {
     offset[0] = 0;
