@@ -8,7 +8,7 @@
 #include "keyboard.h"
 void kernel () {
 //clear_screen();
-//char message[] = "BustOS Kernel running in 32 bit protected mode";
+char message[] = "BustOS Kernel running in 32 bit protected mode";
 //printf(message);
 clear_screen();
 char msg1[] = "Installing interrupt service routines (ISRs).\n";
