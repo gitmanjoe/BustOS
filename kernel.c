@@ -21,6 +21,7 @@ void kernel () {
     init_keyboard();
     char prompt[] = "\nBustOS> ";
     printf(prompt);
+    while(1==1){}
 }
 // receive commands to execute
 void execute_command(char* input) {
