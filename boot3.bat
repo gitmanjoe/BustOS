@@ -1,6 +1,6 @@
 rem boot3.bat
-"C:\Program Files\nasm\nasm" -f bin bootloader8.asm -o bootloader.bin
-gcc -m32 -ffreestanding -c kernel3.c -o kernel.o
+"C:\Program Files\nasm\nasm" -f bin bootloader.asm -o bootloader.bin
+gcc -m32 -ffreestanding -c kernel.c -o kernel.o
 rem objdump -d kernel.o
 gcc -m32 -ffreestanding -c ports.c -o ports.o
 gcc -m32 -ffreestanding -c mem.c -o men.o

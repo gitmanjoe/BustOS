@@ -98,7 +98,7 @@ static void keyboard_callback(registers_t* regs) {
     append(key_buffer, ch);
     // print out letter
     char str[2] = { ch, '\0' };
-    print_string(str);
+    printf(str);
     }
 }
 // register keyboard handler at IRQ1
