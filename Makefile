@@ -1,56 +1,77 @@
-# Compiler and Assembler
+# Detect OS
+ifeq ($(OS),Windows_NT)
+	RM = del /Q
+	COPY = copy /b
+	CAT = type
+	LD = ld
+	OBJCPY = objcopy
+	QEMU = qemu-system-x86_64
+	NULLDEV = NUL
+	SEP = &
+	LDFLAGS = -Ttext 0x7e00 -m elf_i386
+else
+	RM = rm -f
+	COPY = cat
+	CAT = cat
+	LD = ld
+	OBJCPY = objcopy
+	QEMU = qemu-system-x86_64
+	NULLDEV = /dev/null
+	SEP = ;
+	LDFLAGS = -Ttext 0x7e00 -m elf_i386
+endif
+
+# Tools
 CC = gcc
 ASM = nasm
-LD = C:\\i686-elf-tools-windows\\bin\\i686-elf-ld
-OBJCOPY = objcopy
-QEMU = "C:\\Program Files\\qemu\\qemu-system-x86_64.exe"
 
 # Flags
-CFLAGS = -m32 -ffreestanding
-ASMFLAGS = -f elf
-LDFLAGS = -m elf_i386 -Ttext 0x7e00
+CFLAGS = -m32 -ffreestanding -fno-pic -fno-pie
+ASMFLAGS_BIN = -f bin
+ASMFLAGS_ELF = -f elf
 
-# Source Files
-C_SOURCES = kernel.c screen.c games.c cursor.c ports.c tools.c interrupts/idt.c interrupts/isr.c
-ASM_SOURCES = interrupts/interrupt.asm
+# Sources
+C_SOURCES = kernel.c ports.c mem.c cursor.c screen.c strings.c keyboard.c isr.c idt.c
+ASM_SOURCES = interrupts.asm
+BOOTLOADER_SRC = bootloader.asm
 
-# Object Files
+# Objects
 C_OBJECTS = $(C_SOURCES:.c=.o)
-ASM_OBJECTS = $(ASM_SOURCES:.asm=.o)
+ASM_OBJECTS = interrupts.o
 
-# Output Files
+# Outputs
 BOOTLOADER_BIN = bootloader.bin
 KERNEL_BIN = kernel.bin
+KERNEL_TMP = kernel.tmp
 OS_IMAGE = BustOS.img
+PADDING = padding.bin
 
-# Default Target
 all: $(OS_IMAGE)
 
-# Assemble Bootloader
-$(BOOTLOADER_BIN): bootloader.asm
-	$(ASM) -f bin $< -o $@
+$(BOOTLOADER_BIN): $(BOOTLOADER_SRC)
+	$(ASM) $(ASMFLAGS_BIN) $< -o $@
 
-# Compile C Files
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Compile Assembly Files
-%.o: %.asm
-	$(ASM) $(ASMFLAGS) $< -o $@
+interrupts.o: interrupts.asm
+	$(ASM) $(ASMFLAGS_ELF) $< -o $@
 
-# Link Kernel
-$(KERNEL_BIN): $(C_OBJECTS) $(ASM_OBJECTS)
-	$(LD) $(LDFLAGS) -o kernel.tmp $(C_OBJECTS) $(ASM_OBJECTS)
-	$(OBJCOPY) -O binary -j .text kernel.tmp $(KERNEL_BIN)
+$(KERNEL_TMP): $(C_OBJECTS) $(ASM_OBJECTS)
+	$(LD) $(LDFLAGS) -o $@ $(C_OBJECTS) $(ASM_OBJECTS)
 
-# Create OS Image
-$(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN)
-	cat $(BOOTLOADER_BIN) $(KERNEL_BIN) padding.bin > $(OS_IMAGE)
+$(KERNEL_BIN): $(KERNEL_TMP)
+	$(OBJCPY) -O binary -j .text $< $@
 
-# Clean Build Files
+$(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN) $(PADDING)
+ifeq ($(OS),Windows_NT)
+	$(COPY) $(BOOTLOADER_BIN)+$(KERNEL_BIN)+$(PADDING) $(OS_IMAGE)
+else
+	$(CAT) $(BOOTLOADER_BIN) $(KERNEL_BIN) $(PADDING) > $(OS_IMAGE)
+endif
+
 clean:
-	rm -f $(C_OBJECTS) $(ASM_OBJECTS) kernel.tmp $(BOOTLOADER_BIN) $(KERNEL_BIN)
+	$(RM) $(C_OBJECTS) $(ASM_OBJECTS) $(KERNEL_TMP) $(BOOTLOADER_BIN) $(KERNEL_BIN) $(OS_IMAGE)
 
-# Run in QEMU
 run: $(OS_IMAGE)
 	$(QEMU) $(OS_IMAGE)
