@@ -19,13 +19,41 @@ void reverse(char s[]) {
 }
 // convert int to string
 void int_to_string(int n, char str[]) {
-    int i, sign;
-    if ((sign = n) < 0) n = -n;
-    i = 0;
-    do {
-    str[i++] = n % 10 + '0';
-    } while ((n /= 10) > 0);
-    if (sign < 0) str[i++] = '-';
+    int i = 0;
+    int is_negative = 0;
+
+    if (n == 0) {
+        str[i++] = '0';
+        str[i] = '\0';
+        return;
+    }
+
+    if (n < 0) {
+        is_negative = 1;
+        // Handle INT_MIN safely
+        if (n == -2147483648) {
+            // Special case for INT_MIN
+            // "-2147483648"
+            char min_int[] = "-2147483648";
+            int j = 0;
+            while (min_int[j]) {
+                str[j] = min_int[j];
+                j++;
+            }
+            str[j] = '\0';
+            return;
+        }
+        n = -n;
+    }
+
+    while (n != 0) {
+        str[i++] = (n % 10) + '0';
+        n /= 10;
+    }
+
+    if (is_negative)
+        str[i++] = '-';
+
     str[i] = '\0';
     reverse(str);
 }
