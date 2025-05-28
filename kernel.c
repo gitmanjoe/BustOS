@@ -36,8 +36,6 @@ void kernel()
     //char tux[] = "Linux Sucks";
     //cowsay(moo);
     //tuxsay(tux);
-
-    while (true) {}
 }
 
 void execute_command(char* input) {
