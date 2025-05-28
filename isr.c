@@ -126,7 +126,7 @@ void isr_handler(registers_t* r) {
     char msg[] = "received ISR interrupt: ";
     printf(msg);
     char s[32];
-    // print interript number
+    // print interrupt number
     int_to_string(r->int_no, s);
     printf(s);
     crlf();
