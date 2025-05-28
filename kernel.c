@@ -54,3 +54,7 @@ void execute_command(char* input) {
     char prompt[] = "\nBustOS> ";
     printf(prompt);
 }
+
+void _start() {
+    kernel();
+}
