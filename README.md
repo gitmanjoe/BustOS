@@ -1,6 +1,7 @@
 # BustOS
 This is our attempt at making an Operating System from scratch.
 ## Planned Features in Order of Importance:
+- Remove case sensitive shell
 - VGA Graphics
 - Sound
 - Filesystem
