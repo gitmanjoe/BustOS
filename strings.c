@@ -60,8 +60,10 @@ void int_to_string(int n, char str[]) {
 // append char to a string
 void append(char s[], char n) {
     int len = string_length(s);
-    s[len] = n;
-    s[len + 1] = '\0';
+    if (len < 255) { // Fix: prevent buffer overflow
+        s[len] = n;
+        s[len + 1] = '\0';
+    }
 }
 // remove last char in a string
 int backspace(char s[]) {

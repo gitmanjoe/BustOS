@@ -75,11 +75,11 @@ extern void irq15();
 // push byte`s on the isr-specific code: error code, then int number
 // All the registers by pusha
 // push eax` whose lower 16-bits contain DS
-typedef struct {
- unsigned int ds; // Data segment selector 
- unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax; // Pushed by pusha. 
- unsigned int int_no, err_code; // Interrupt number and error code 
- unsigned int eip, cs, eflags, useresp, ss; // Pushed by the processor automatically 
+typedef struct __attribute__((packed)) registers {
+    unsigned int ds;
+    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;
+    unsigned int int_no, err_code;
+    unsigned int eip, cs, eflags;
 } registers_t;
 // install isr's
 void isr_install();

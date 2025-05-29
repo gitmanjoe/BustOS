@@ -91,15 +91,16 @@ static void keyboard_callback(registers_t* regs) {
     }
     // handle enter key
     else if (ch == ENTER) {
-        execute_command(key_buffer); // execute command
-        key_buffer[0] = '\0'; // clear key buffer
+        execute_command(key_buffer);
+        key_buffer[0] = '\0';
     }
     // any other key store in buffer
-    else {
+    else if (ch) { // Only if ch is not zero
         append(key_buffer, ch);
-        // print out letter
-        char str[2] = { ch, '\0' };
-        printf(str);
+        if (ch >= 32 && ch <= 126) {
+            char str[2] = { ch, '\0' };
+            printf(str);
+        }
     }
 }
 // register keyboard handler at IRQ1

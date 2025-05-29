@@ -118,7 +118,7 @@ void isr_handler(registers_t* r) {
     char msg30[] = "Reserved";
     char msg31[] = "Reserved";
 
-    // array of message pointers
+    // array of message pointers scancodes, you may only see one character.
     char* messages[] = { msg0, msg1, msg2, msg3, msg4, msg5, msg6, msg7, msg8, msg9, 
     msg10, msg11,msg12, msg13, msg14, msg15, msg16, msg17 ,msg18, msg19, msg20, msg21, 
     msg22, msg23, msg24, msg25, msg26, msg27, msg28, msg29, msg30, msg31};
@@ -141,21 +141,25 @@ void register_interrupt_handler(unsigned char n, isr_t handler) {
 }
 // irq handler
 void irq_handler(registers_t *r) {
-    //char msg[] = "received IRQ interrupt: ";
-    //printf(msg);
 
-    // Handle the interrupt
-    if (interrupt_handlers[r->int_no] !=0 && r->int_no > 32) {
-    //char text[20];
-    //int_to_string(r->int_no, text);
-    //printf(text);
-    isr_t handler = interrupt_handlers[r->int_no];
-    handler(r);
-    }
-    // EOI
-    // tell PIC we are finished
+    //Shows what interrupts are being recieved
+    /*char msg[] = "received ISR interrupt: ";
+    printf(msg);
+    char s[32];
+    // print interrupt number
+    int_to_string(r->int_no, s);
+    printf(s);
+    crlf();*/
+    
+    // Always send EOI
     if (r->int_no >= 40) {
-    port_byte_out(0xA0, 0x20); /* follower */
+        port_byte_out(0xA0, 0x20); // slave PIC
     }
-    port_byte_out(0x20, 0x20); /* leader */
+    port_byte_out(0x20, 0x20); // master PIC
+
+    // Now call the handler if registered
+    if (interrupt_handlers[r->int_no] != 0 && r->int_no >= 32) {
+        isr_t handler = interrupt_handlers[r->int_no];
+        handler(r);
+    }
 }

@@ -1,5 +1,6 @@
 #define TEXT_COLOUR 0x0a
 #include <stdbool.h>
+#include "ports.h"
 #include "games.h"
 #include "screen.h"
 #include "cursor.h"
@@ -13,28 +14,26 @@ void kernel()
 {
     set_colour(TEXT_COLOUR);
     clear_screen();
-    //print_logo();
+
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
     printf(welcome);
 
-    char msg1[] = "Installing interrupt service routines (ISRs).\n";
-    printf(msg1);
+    char isr_msg[] = "Installing interrupt service routines (ISRs).\n";
+    printf(isr_msg);
     isr_install();
 
-    char msg2[] = "Enabling external interrupts.\n";
-    printf(msg2);
-    asm volatile("sti");
-
-    char msg3[] = "Initializing keyboard (IRQ 1).\n";
-    printf(msg3);
+    char kb_msg[] = "Initializing keyboard (IRQ 1).\n";
+    printf(kb_msg);
     init_keyboard();
 
-    char prompt[] = "\nBustOS> ";
+    char enable_msg[] = "Enabling external interrupts.\n";
+    printf(enable_msg);
+    asm volatile("sti");
+
+    char prompt[] = "\nBustOS>";
     printf(prompt);
 
-    //char moo[] = "BustOS";
     //char tux[] = "Linux Sucks";
-    //cowsay(moo);
     //tuxsay(tux);
 }
 
@@ -42,7 +41,7 @@ void execute_command(char* input) {
     // exit command
     char exitmsg[] = "EXIT";
     if (compare_string(input, exitmsg) == 0) {
-        char msg[] = "Exit\n";
+        char msg[] = "\nExit\n";
         printf(msg);
         asm volatile("hlt"); // halt cpu
     }

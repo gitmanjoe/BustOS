@@ -31,7 +31,7 @@ ASMFLAGS_BIN = -f bin
 ASMFLAGS_ELF = -f elf
 
 # Sources
-C_SOURCES = kernel.c ports.c mem.c cursor.c screen.c strings.c keyboard.c isr.c idt.c
+C_SOURCES = kernel.c ports.c mem.c cursor.c screen.c strings.c keyboard.c isr.c idt.c games.c
 ASM_SOURCES = interrupts.asm
 BOOTLOADER_SRC = bootloader.asm
 
@@ -61,7 +61,7 @@ $(KERNEL_TMP): $(C_OBJECTS) $(ASM_OBJECTS)
 	$(LD) $(LDFLAGS) -o $@ $(C_OBJECTS) $(ASM_OBJECTS)
 
 $(KERNEL_BIN): $(KERNEL_TMP)
-	$(OBJCPY) -O binary -j .text $< $@
+	$(OBJCPY) -O binary -j .text -j .data -j .rodata $< $@
 
 $(OS_IMAGE): $(BOOTLOADER_BIN) $(KERNEL_BIN) $(PADDING)
 ifeq ($(OS),Windows_NT)
