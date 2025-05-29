@@ -45,6 +45,12 @@ void execute_command(char* input) {
         printf(msg);
         asm volatile("hlt"); // halt cpu
     }
+    char clearmsg[] = "CLEAR";
+    if (compare_string(input, clearmsg) == 0) {
+        char msg[] = "\nExit\n";
+        clear_screen();
+    }
+    //Debug Info
     char msg[] = "\ncommand: ";
     printf(msg);
     printf(input);
