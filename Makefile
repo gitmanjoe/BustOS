@@ -1,24 +1,26 @@
 # Detect OS
 ifeq ($(OS),Windows_NT)
-	RM = del /Q
-	COPY = copy /b
-	CAT = type
-	LD = ld
-	OBJCPY = objcopy
-	QEMU = qemu-system-x86_64
-	NULLDEV = NUL
-	SEP = &
-	LDFLAGS = -Ttext 0x7e00 -m elf_i386
+    RM = rm -f
+    COPY = copy /b
+    CAT = type
+    LD = ld
+    OBJCPY = objcopy
+    QEMU = qemu-system-x86_64
+    NULLDEV = NUL
+    SEP = &
+    LDFLAGS = -Ttext 0x7e00 -m i386pe --kill-at
+    ASMFLAGS_ELF = -f win32 -dWINDOWS
 else
-	RM = rm -f
-	COPY = cat
-	CAT = cat
-	LD = ld
-	OBJCPY = objcopy
-	QEMU = qemu-system-x86_64
-	NULLDEV = /dev/null
-	SEP = ;
-	LDFLAGS = -Ttext 0x7e00 -m elf_i386
+    RM = rm -f
+    COPY = cat
+    CAT = cat
+    LD = ld
+    OBJCPY = objcopy
+    QEMU = qemu-system-x86_64
+    NULLDEV = /dev/null
+    SEP = ;
+    LDFLAGS = -Ttext 0x7e00 -m elf_i386
+    ASMFLAGS_ELF = -f elf
 endif
 
 # Tools
@@ -28,7 +30,6 @@ ASM = nasm
 # Flags
 CFLAGS = -m32 -ffreestanding -fno-pic -fno-pie
 ASMFLAGS_BIN = -f bin
-ASMFLAGS_ELF = -f elf
 
 # Sources
 C_SOURCES = kernel.c ports.c cursor.c screen.c strings.c keyboard.c isr.c idt.c games.c hardware.c tools.c
@@ -54,9 +55,11 @@ $(BOOTLOADER_BIN): $(BOOTLOADER_SRC)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Ensure interrupts.asm exports required symbols
 interrupts.o: interrupts.asm
 	$(ASM) $(ASMFLAGS_ELF) $< -o $@
 
+# Link all object files
 $(KERNEL_TMP): $(C_OBJECTS) $(ASM_OBJECTS)
 	$(LD) $(LDFLAGS) -o $@ $(C_OBJECTS) $(ASM_OBJECTS)
 

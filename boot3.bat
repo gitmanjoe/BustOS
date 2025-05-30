@@ -1,5 +1,5 @@
 rem boot3.bat
-"C:\Program Files\nasm\nasm" -f bin bootloader.asm -o bootloader.bin
+nasm -f bin bootloader.asm -o bootloader.bin
 gcc -m32 -ffreestanding -c kernel.c -o kernel.o
 rem objdump -d kernel.o
 gcc -m32 -ffreestanding -c ports.c -o ports.o
@@ -11,8 +11,10 @@ gcc -m32 -ffreestanding -c isr.c -o isr.o
 gcc -m32 -ffreestanding -c idt.c -o idt.o
 gcc -m32 -ffreestanding -c hardware.c -o hardware.o
 gcc -m32 -ffreestanding -c tools.c -o tools.o
-"C:\Program Files\nasm\nasm" -f elf interrupts.asm -o interrupts.o
-ld -T NUL -m i386pe -o kernel.tmp -Ttext 0x7e00 kernel.o ports.o mem.o cursor.o screen.o strings.o keyboard.o isr.o idt.o interrupts.o
+gcc -m32 -ffreestanding -c games.c -o games.o
+gcc -m32 -ffreestanding -c hardware.c -o hardware.o
+nasm -f elf interrupts.asm -o interrupts.o
+ld -T NUL -m i386pe -o kernel.tmp -Ttext 0x7e00 interrupts.o kernel.o ports.o tools.o cursor.o screen.o strings.o keyboard.o isr.o idt.o games.o hardware.o
 objcopy -O binary -j .text kernel.tmp kernel.bin
 rem "C:\Program Files\nasm\ndisasm" -b 32 kernel.bin
 copy /b bootloader.bin+kernel.bin+padding.bin BustOS.img
