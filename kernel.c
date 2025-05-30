@@ -9,6 +9,7 @@
 #include "isr.h"
 #include "keyboard.h"
 #include "types.h"
+#include "hardware.h"
 
 void kernel() 
 {
@@ -57,6 +58,7 @@ void execute_command(char* input) {
 
     char cowsaymsg[] = "COWSAY";
     char tuxsaymsg[] = "TUXSAY";
+    char hwinfomsg[] = "HWINFO";
     char exitmsg[] = "HELP";
     char clearmsg[] = "CLEAR";
     char helpmsg[] = "EXIT";
@@ -81,6 +83,9 @@ void execute_command(char* input) {
 
         crlf();
         tuxsay(message);
+    }
+    else if (compare_string(tokens[0], hwinfomsg) == 0) {
+        print_hardware_info();
     }
     else if (compare_string(input, exitmsg) == 0) {
         //char msg[] = "\nHelp\n";
