@@ -6,6 +6,7 @@ This is our attempt at making an Operating System from scratch.
 - Filesystem
 - Gui
 ## Implemented Features in Order From Newest to Oldest
+- HWInfo
 - Remove case sensitive shell
 - Shell
 - Able to type text on screen
