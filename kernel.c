@@ -16,6 +16,8 @@ void kernel()
     set_colour(TEXT_COLOUR);
     clear_screen();
 
+    print_logo();
+
     char welcome[] = "Welcome To BustOS - 32 Bit Protected Mode\n";
     printf(welcome);
 
