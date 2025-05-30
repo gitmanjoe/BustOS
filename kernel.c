@@ -52,7 +52,14 @@ void execute_command(char* input) {
 
     split_string(input, ' ', tokens, &token_count);
 
+    //Convert 1st token to uppercase to remove case sensitivity
+    capitalize_string(tokens[0]);
+
     char cowsaymsg[] = "COWSAY";
+    char tuxsaymsg[] = "TUXSAY";
+    char exitmsg[] = "HELP";
+    char clearmsg[] = "CLEAR";
+    char helpmsg[] = "EXIT";
     if (compare_string(tokens[0], cowsaymsg) ==0) {
         //char msg[] = "\nCowsay\n";
         //printf(msg);
@@ -64,8 +71,7 @@ void execute_command(char* input) {
         crlf();
         cowsay(message);
     }
-    char tuxsaymsg[] = "TUXSAY";
-    if (compare_string(tokens[0], tuxsaymsg) ==0) {
+    else if (compare_string(tokens[0], tuxsaymsg) ==0) {
         //char msg[] = "\nTuxsay\n";
         //printf(msg);
 
@@ -76,8 +82,7 @@ void execute_command(char* input) {
         crlf();
         tuxsay(message);
     }
-    char exitmsg[] = "HELP";
-    if (compare_string(input, exitmsg) == 0) {
+    else if (compare_string(input, exitmsg) == 0) {
         //char msg[] = "\nHelp\n";
         //printf(msg);
         char message[] = "\nCOWSAY: Makes a cow say the string used as a parameter"
@@ -86,21 +91,25 @@ void execute_command(char* input) {
                          "\nEXIT: Leave BustOS\n";
         printf(message);
     }
-    char clearmsg[] = "CLEAR";
-    if (compare_string(input, clearmsg) == 0) {
+    else if (compare_string(input, clearmsg) == 0) {
         clear_screen();
     }
-    char helpmsg[] = "EXIT";
-    if (compare_string(input, helpmsg) == 0) {
+    else if (compare_string(input, helpmsg) == 0) {
         char msg[] = "\nExit\n";
         printf(msg);
         asm volatile("hlt"); // halt cpu
+    }
+    else {
+        char msg[] = ": command not found\n";
+        crlf();
+        printf(input);
+        printf(msg);
     }
     //Debug Info
     //char msg[] = "\ncommand: ";
     //printf(msg);
     //printf(input);
-
+    
     char prompt[] = "\nBustOS> ";
     printf(prompt);
 }
