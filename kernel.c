@@ -80,7 +80,10 @@ void execute_command(char* input) {
     if (compare_string(input, exitmsg) == 0) {
         //char msg[] = "\nHelp\n";
         //printf(msg);
-        char message[] = "\nCOWSAY Makes a cow say the string used as a parameter\nTUXSAY: Makes Tux say the string used as a parameter\nCLEAR: Clear screen\nEXIT: Leave BustOS\n";
+        char message[] = "\nCOWSAY: Makes a cow say the string used as a parameter"
+                         "\nTUXSAY: Makes Tux say the string used as a parameter"
+                         "\nCLEAR: Clear screen"
+                         "\nEXIT: Leave BustOS\n";
         printf(message);
     }
     char clearmsg[] = "CLEAR";
