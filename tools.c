@@ -1,6 +1,6 @@
 #include "tools.h"
 #include "screen.h"
-#include "interrupts/types.h"
+#include "types.h"
 
 #define BLK_WHI 0x0f
 
