@@ -127,3 +127,13 @@ void append_string(char* s1, char* s2) {
     }
     s1[len + i] = '\0';
 }
+
+void capitalize_string(char s[]) {
+    int i = 0;
+    while (s[i] != '\0') {
+        if (s[i] >= 'a' && s[i] <= 'z') {
+            s[i] = s[i] - ('a' - 'A');
+        }
+        i++;
+    }
+}
