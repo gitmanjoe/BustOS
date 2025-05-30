@@ -64,6 +64,18 @@ void execute_command(char* input) {
         crlf();
         cowsay(message);
     }
+    char tuxsaymsg[] = "TUXSAY";
+    if (compare_string(tokens[0], tuxsaymsg) ==0) {
+        //char msg[] = "\nTuxsay\n";
+        //printf(msg);
+
+        // Combine all tokens after TUXSAY
+        char message[256] = "";
+        combine_tokens(tokens, token_count, message);
+
+        crlf();
+        tuxsay(message);
+    }
     char exitmsg[] = "EXIT";
     if (compare_string(input, exitmsg) == 0) {
         char msg[] = "\nExit\n";
