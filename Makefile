@@ -31,7 +31,7 @@ ASMFLAGS_BIN = -f bin
 ASMFLAGS_ELF = -f elf
 
 # Sources
-C_SOURCES = kernel.c ports.c mem.c cursor.c screen.c strings.c keyboard.c isr.c idt.c games.c
+C_SOURCES = kernel.c ports.c mem.c cursor.c screen.c strings.c keyboard.c isr.c idt.c games.c hardware.c
 ASM_SOURCES = interrupts.asm
 BOOTLOADER_SRC = bootloader.asm
 
