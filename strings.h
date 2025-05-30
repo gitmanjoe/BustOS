@@ -11,3 +11,4 @@ void append(char s[], char n);
 int compare_string(char s1[], char s2[]);
 void split_string(char* str, char delim, char** tokens, int* token_count);
 void append_string(char* s1, char* s2);
+void capitalize_string(char s[]);
