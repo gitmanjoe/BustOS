@@ -2,6 +2,7 @@
 // string manipulation functions
 #include "strings.h"
 #include "types.h"
+
 // return string length
 int string_length(char s[]) {
     int i = 0;
@@ -84,4 +85,45 @@ int compare_string(char s1[], char s2[]) {
         if (s1[i] == '\0') return 0;
     }
     return s1[i] - s2[i];
+}
+// Splits string on delimiter. Example: split_string("a b c", ' ', tokens, &count) -> tokens=["a","b","c"], count=3
+void split_string(char* str, char delim, char** tokens, int* token_count) {
+    *token_count = 0;
+    char* start = str;
+    
+    // Handle empty string
+    if (!str || !*str) {
+        return;
+    }
+
+    while (*str) {
+        if (*str == delim) {
+            *str = '\0';  // Replace delimiter with null terminator
+            if (start != str) {  // Avoid empty tokens
+                tokens[*token_count] = start;
+                (*token_count)++;
+                if (*token_count >= MAX_TOKENS) {
+                    return;
+                }
+            }
+            start = str + 1;
+        }
+        str++;
+    }
+    
+    // Add the last token if it exists
+    if (start != str) {
+        tokens[*token_count] = start;
+        (*token_count)++;
+    }
+}
+
+void append_string(char* s1, char* s2) {
+    int len = string_length(s1);
+    int i = 0;
+    while (s2[i] != '\0' && len < 254) { // Leave room for null terminator
+        s1[len + i] = s2[i];
+        i++;
+    }
+    s1[len + i] = '\0';
 }

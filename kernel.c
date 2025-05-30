@@ -37,8 +37,33 @@ void kernel()
     //tuxsay(tux);
 }
 
+void combine_tokens(char* tokens[], int token_count, char* message) {
+    for (int i = 1; i < token_count; i++) {
+        append_string(message, tokens[i]);
+        if (i < token_count - 1) {
+            append_string(message, " "); // Add space between words
+        }
+    }
+}
+
 void execute_command(char* input) {
-    // exit command
+    char* tokens[MAX_TOKENS];  // Make sure MAX_TOKENS is defined in strings.h
+    int token_count = 0;
+
+    split_string(input, ' ', tokens, &token_count);
+
+    char cowsaymsg[] = "COWSAY";
+    if (compare_string(tokens[0], cowsaymsg) ==0) {
+        //char msg[] = "\nCowsay\n";
+        //printf(msg);
+
+        // Combine all tokens after COWSAY
+        char message[256] = "";
+        combine_tokens(tokens, token_count, message);
+
+        crlf();
+        cowsay(message);
+    }
     char exitmsg[] = "EXIT";
     if (compare_string(input, exitmsg) == 0) {
         char msg[] = "\nExit\n";
@@ -47,13 +72,13 @@ void execute_command(char* input) {
     }
     char clearmsg[] = "CLEAR";
     if (compare_string(input, clearmsg) == 0) {
-        char msg[] = "\nExit\n";
         clear_screen();
     }
     //Debug Info
-    char msg[] = "\ncommand: ";
-    printf(msg);
-    printf(input);
+    //char msg[] = "\ncommand: ";
+    //printf(msg);
+    //printf(input);
+
     char prompt[] = "\nBustOS> ";
     printf(prompt);
 }
