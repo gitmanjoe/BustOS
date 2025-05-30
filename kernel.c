@@ -76,15 +76,22 @@ void execute_command(char* input) {
         crlf();
         tuxsay(message);
     }
-    char exitmsg[] = "EXIT";
+    char exitmsg[] = "HELP";
     if (compare_string(input, exitmsg) == 0) {
-        char msg[] = "\nExit\n";
-        printf(msg);
-        asm volatile("hlt"); // halt cpu
+        //char msg[] = "\nHelp\n";
+        //printf(msg);
+        char message[] = "\nCOWSAY Makes a cow say the string used as a parameter\nTUXSAY: Makes Tux say the string used as a parameter\nCLEAR: Clear screen\nEXIT: Leave BustOS\n";
+        printf(message);
     }
     char clearmsg[] = "CLEAR";
     if (compare_string(input, clearmsg) == 0) {
         clear_screen();
+    }
+    char helpmsg[] = "EXIT";
+    if (compare_string(input, helpmsg) == 0) {
+        char msg[] = "\nExit\n";
+        printf(msg);
+        asm volatile("hlt"); // halt cpu
     }
     //Debug Info
     //char msg[] = "\ncommand: ";
