@@ -77,4 +77,4 @@ clean:
 	$(RM) $(C_OBJECTS) $(ASM_OBJECTS) $(KERNEL_TMP) $(BOOTLOADER_BIN) $(KERNEL_BIN) $(OS_IMAGE)
 
 run: $(OS_IMAGE)
-	$(QEMU) $(OS_IMAGE)
+	$(QEMU) -drive file=$(OS_IMAGE),format=raw,index=0,media=disk

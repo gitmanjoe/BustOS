@@ -19,5 +19,5 @@ objcopy -O binary -j .text kernel.tmp kernel.bin
 rem "C:\Program Files\nasm\ndisasm" -b 32 kernel.bin
 copy /b bootloader.bin+kernel.bin+padding.bin BustOS.img
 rem "C:\Program Files\nasm\ndisasm" -b 32 BustOS.img
-"C:\Program Files\qemu\qemu-system-x86_64.exe" BustOS.img
-IF %ERRORLEVEL% NEQ 0 (C:\msys64\ucrt64\bin\qemu-system-x86_64.exe BustOS.img)
+"C:\Program Files\qemu\qemu-system-x86_64.exe" -drive file=BustOS.img,format=raw,index=0,media=disk
+IF %ERRORLEVEL% NEQ 0 (C:\msys64\ucrt64\bin\qemu-system-x86_64.exe -drive file=BustOS.img,format=raw,index=0,media=disk)
