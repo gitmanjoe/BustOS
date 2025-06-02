@@ -1,6 +1,7 @@
 #include "hardware.h"
 #include "screen.h"
 #include "strings.h"
+#include "tools.h"
 
 // CPUID wrapper function
 static inline void cpuid(unsigned int code, unsigned int* a, unsigned int* b, unsigned int* c, unsigned int* d) {
@@ -78,22 +79,29 @@ void print_hardware_info(void) {
     struct cpu_info cpu;
     get_cpu_info(&cpu);
 
-    printf("\nHardware Information:\n");
+    clear_screen();
+    print_b_logo();
+
+    set_offset(32, 7);
     printf("CPU Vendor: ");
     printf(cpu.vendor);
-    printf("\nCPU Brand: ");
+    set_offset(32, 8);
+    printf("CPU Brand: ");
     printf(cpu.brand);
-    printf("\nCPU Family: ");
+    set_offset(32, 9);
+    printf("CPU Family: ");
     char family[8];
     int_to_string(cpu.family, family);
     printf(family);
-    printf("\nCPU Model: ");
+    set_offset(32, 10);
+    printf("CPU Model: ");
     char model[8];
     int_to_string(cpu.model, model);
     printf(model);
-    printf("\nCPU Stepping: ");
+    set_offset(32, 11);
+    printf("CPU Stepping: ");
     char stepping[8];
     int_to_string(cpu.stepping, stepping);
     printf(stepping);
-    printf("\n");
+    set_offset(0, 22);
 }

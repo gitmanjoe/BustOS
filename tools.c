@@ -5,6 +5,31 @@
 #define BLK_WHI 0x0f
 
 void print_logo(){char logo1[] = " ____            _    ___  ____ \n";char logo2[] = "| __ ) _   _ ___| |_ / _ \\/ ___|\n";char logo3[] = "|  _ \\| | | / __| __| | | \\___ \\ \n";char logo4[] = "| |_) | |_| \\__ \\ |_| |_| |___) |\n";char logo5[] = "|____/ \\__,_|___/\\__|\\___/|____/ \n";printf(logo1);printf(logo2);printf(logo3);printf(logo4);printf(logo5);}
+void print_b_logo() {
+    char b_logo[] =
+    "          _____          \n"
+    "         /\\    \\         \n"
+    "        /::\\    \\        \n"
+    "       /::::\\    \\       \n"
+    "      /::::::\\    \\      \n"
+    "     /:::/\\:::\\    \\     \n"
+    "    /:::/__\\:::\\    \\    \n" //text starts
+    "   /::::\\   \\:::\\    \\   \n"
+    "  /::::::\\   \\:::\\    \\  \n"
+    " /:::/\\:::\\   \\:::\\ ___\\ \n"
+    "/:::/__\\:::\\   \\:::|    |\n"
+    "\\:::\\   \\:::\\  /:::|____|\n" //29 chars long
+    " \\:::\\   \\:::\\/:::/    / \n"
+    "  \\:::\\   \\::::::/    /  \n" //text ends
+    "   \\:::\\   \\::::/    /   \n"
+    "    \\:::\\  /:::/    /    \n"
+    "     \\:::\\/:::/    /     \n"
+    "      \\::::::/    /      \n"
+    "       \\::::/    /       \n"
+    "        \\::/____/        \n"
+    "         ~~              \n";
+    printf(b_logo);
+}
 void enable_interrupts(){__asm__ volatile("sti");}
 int str_to_int(char* str){
     int num = 0;
