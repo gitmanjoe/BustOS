@@ -11,6 +11,10 @@
 #include "types.h"
 #include "hardware.h"
 
+#define OSVER "1.0"
+
+char prompt[] = "BustOS>";
+
 void kernel() 
 {
     set_colour(TEXT_COLOUR);
@@ -33,7 +37,7 @@ void kernel()
     printf(enable_msg);
     asm volatile("sti");
 
-    char prompt[] = "\nBustOS>";
+    crlf();
     printf(prompt);
 
     //char tux[] = "Linux Sucks";
@@ -58,13 +62,7 @@ void execute_command(char* input) {
     //Convert 1st token to uppercase to remove case sensitivity
     capitalize_string(tokens[0]);
 
-    char cowsaymsg[] = "COWSAY";
-    char tuxsaymsg[] = "TUXSAY";
-    char hwinfomsg[] = "HWINFO";
-    char exitmsg[] = "HELP";
-    char clearmsg[] = "CLEAR";
-    char helpmsg[] = "EXIT";
-    if (compare_string(tokens[0], cowsaymsg) ==0) {
+    if (compare_string(tokens[0], "COWSAY") ==0) {
         //char msg[] = "\nCowsay\n";
         //printf(msg);
 
@@ -75,7 +73,7 @@ void execute_command(char* input) {
         crlf();
         cowsay(message);
     }
-    else if (compare_string(tokens[0], tuxsaymsg) ==0) {
+    else if (compare_string(tokens[0], "TUXSAY") ==0) {
         //char msg[] = "\nTuxsay\n";
         //printf(msg);
 
@@ -86,22 +84,28 @@ void execute_command(char* input) {
         crlf();
         tuxsay(message);
     }
-    else if (compare_string(tokens[0], hwinfomsg) == 0) {
+    else if (compare_string(tokens[0], "HWINFO") == 0) {
         print_hardware_info();
     }
-    else if (compare_string(input, exitmsg) == 0) {
+    else if (compare_string(input, "HELP") == 0) {
         //char msg[] = "\nHelp\n";
         //printf(msg);
         char message[] = "\nCOWSAY: Makes a cow say the string used as a parameter"
                          "\nTUXSAY: Makes Tux say the string used as a parameter"
+                         "\nHWINFO: Give Specs"
                          "\nCLEAR: Clear screen"
                          "\nEXIT: Leave BustOS\n";
         printf(message);
     }
-    else if (compare_string(input, clearmsg) == 0) {
+    else if (compare_string(input, "CLEAR") == 0) {
         clear_screen();
     }
-    else if (compare_string(input, helpmsg) == 0) {
+    else if (compare_string(input, "VERSION") == 0) {
+        printf("\nBustOS Version ");
+        printf(OSVER);
+        crlf();
+    }
+    else if (compare_string(input, "EXIT") == 0) {
         char msg[] = "\nExit\n";
         printf(msg);
         asm volatile("hlt"); // halt cpu
@@ -117,7 +121,7 @@ void execute_command(char* input) {
     //printf(msg);
     //printf(input);
     
-    char prompt[] = "\nBustOS> ";
+    crlf();
     printf(prompt);
 }
 
