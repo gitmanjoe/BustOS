@@ -94,6 +94,7 @@ void execute_command(char* input) {
                          "\nTUXSAY: Makes Tux say the string used as a parameter"
                          "\nHWINFO: Give Specs"
                          "\nCLEAR: Clear screen"
+                         "\nVERSION: BustOS Version"
                          "\nEXIT: Leave BustOS\n";
         printf(message);
     }
