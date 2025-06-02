@@ -72,6 +72,7 @@ ifeq ($(OS),Windows_NT)
 else
 	$(CAT) $(BOOTLOADER_BIN) $(KERNEL_BIN) $(PADDING) > $(OS_IMAGE)
 endif
+	$(RM) $(C_OBJECTS) $(ASM_OBJECTS)
 
 clean:
 	$(RM) $(C_OBJECTS) $(ASM_OBJECTS) $(KERNEL_TMP) $(BOOTLOADER_BIN) $(KERNEL_BIN) $(OS_IMAGE)
