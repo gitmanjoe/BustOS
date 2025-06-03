@@ -96,3 +96,14 @@ void int_to_ascii(int n, char str[]) {
 
     /* TODO: implement "reverse" */
 }
+
+void sleep_ms(unsigned int ms) {
+    volatile unsigned int count;
+    while (ms--) {
+        // This loop is hardware and compiler dependent.
+        // Adjust the count value for your CPU speed.
+        for (count = 0; count < 10000; count++) {
+            __asm__ volatile("nop");
+        }
+    }
+}
