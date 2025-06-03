@@ -32,7 +32,7 @@ CFLAGS = -m32 -ffreestanding -fno-pic -fno-pie
 ASMFLAGS_BIN = -f bin
 
 # Sources
-C_SOURCES = kernel.c ports.c cursor.c screen.c strings.c keyboard.c isr.c idt.c games.c hardware.c tools.c timer.c
+C_SOURCES = kernel.c ports.c cursor.c screen.c strings.c keyboard.c isr.c idt.c games.c hardware.c tools.c timer.c sound.c
 ASM_SOURCES = interrupts.asm
 BOOTLOADER_SRC = bootloader.asm
 
