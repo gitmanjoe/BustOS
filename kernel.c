@@ -111,6 +111,9 @@ void execute_command(char* input) {
         printf(msg);
         asm volatile("hlt"); // halt cpu
     }
+    else if (compare_string(input, "") == 0) {
+        
+    }
     else {
         char msg[] = ": command not found\n";
         crlf();
