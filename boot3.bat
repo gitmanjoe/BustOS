@@ -13,8 +13,11 @@ gcc -m32 -ffreestanding -c hardware.c -o hardware.o
 gcc -m32 -ffreestanding -c tools.c -o tools.o
 gcc -m32 -ffreestanding -c games.c -o games.o
 gcc -m32 -ffreestanding -c hardware.c -o hardware.o
+gcc -m32 -ffreestanding -c timer.c -o timer.o
+gcc -m32 -ffreestanding -c sound.c -o sounds.o
 nasm -f elf interrupts.asm -o interrupts.o
-ld -T NUL -m i386pe -o kernel.tmp -Ttext 0x7e00 interrupts.o kernel.o ports.o tools.o cursor.o screen.o strings.o keyboard.o isr.o idt.o games.o hardware.o
+i686-elf-ld -T link.ld -m elf_i386 -o kernel.tmp -Ttext 0x7e00 kernel.o ports.o screen.o strings.o keyboard.o isr.o idt.o interrupts.o timer.o sounds.o games.o hardware.o tools.o cursor.o
+rem ld -T NUL -m i386pe -o kernel.tmp -Ttext 0x7e00 interrupts.o kernel.o ports.o tools.o cursor.o screen.o strings.o keyboard.o isr.o idt.o games.o hardware.o
 objcopy -O binary -j .text kernel.tmp kernel.bin
 rem "C:\Program Files\nasm\ndisasm" -b 32 kernel.bin
 copy /b bootloader.bin+kernel.bin+padding.bin BustOS.img
