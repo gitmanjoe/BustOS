@@ -16,8 +16,7 @@
 
 char prompt[] = "BustOS>";
 
-void kernel() 
-{
+void kernel() {
     set_colour(TEXT_COLOUR);
     clear_screen();
 
