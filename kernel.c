@@ -39,7 +39,7 @@ void kernel() {
 
     crlf();
     printf(prompt);
-    play_freq(3500);
+    play_freq(440);
 
     //char tux[] = "Linux Sucks";
     //tuxsay(tux);
