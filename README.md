@@ -1,6 +1,10 @@
 # BustOS
 This is our attempt at making an Operating System from scratch.
 ## Planned Features in Order of Importance:
+- Get current time/uptime
+- Hexdump command
+- Ram read/edit/manip commands
+- Rebot command
 - VGA Graphics
 - Sound
 - Filesystem

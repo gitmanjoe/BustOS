@@ -1,0 +1,61 @@
+Here are some interesting features you could add to BustOS, in order of complexity:
+
+1. **System Information Commands**
+```c
+else if (compare_string(tokens[0], "TIME") == 0) {
+    // Read CMOS RTC for real time
+    print_current_time();
+}
+else if (compare_string(tokens[0], "UPTIME") == 0) {
+    // Show time since boot
+    print_uptime();
+}
+```
+
+2. **File System Commands**
+- Basic RAM disk implementation
+- Commands like `LIST`, `WRITE`, `READ`, `DELETE`
+
+3. **Simple Games**
+- Number guessing game
+- Text adventure
+- Hangman
+
+4. **System Management**
+```c
+else if (compare_string(tokens[0], "REBOOT") == 0) {
+    printf("\nRebooting system...\n");
+    reboot_system();
+}
+else if (compare_string(tokens[0], "BEEP") == 0) {
+    // Play system speaker tone
+    beep(1000, 100); // 1000Hz for 100ms
+}
+```
+
+5. **User Experience**
+- Command history (up/down arrows)
+- Tab completion
+- Color text support
+- Custom ASCII art display command
+
+6. **Development Tools**
+```c
+else if (compare_string(tokens[0], "HEXDUMP") == 0) {
+    // Display memory contents in hex
+    unsigned int addr;
+    string_to_int(tokens[1], &addr);
+    hexdump(addr, 256);
+}
+```
+
+7. **Network Stack**
+- Basic packet driver
+- Simple ping command
+
+8. **Process Management**
+- Basic task switching
+- Background processes
+- `PS` command to list processes
+
+Would you like me to elaborate on implementing any of these features?
