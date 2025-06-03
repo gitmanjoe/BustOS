@@ -39,7 +39,6 @@ void kernel() {
 
     crlf();
     printf(prompt);
-    play_freq(440);
 
     //char tux[] = "Linux Sucks";
     //tuxsay(tux);
@@ -63,7 +62,15 @@ void execute_command(char* input) {
     //Convert 1st token to uppercase to remove case sensitivity
     capitalize_string(tokens[0]);
 
-    if (compare_string(tokens[0], "COWSAY") ==0) {
+    if (compare_string(tokens[0], "ECHO") ==0) {
+        // Combine all tokens after ECHO
+        char message[256] = "";
+        combine_tokens(tokens, token_count, message);
+
+        crlf();
+        printf(message);
+    }
+    else if (compare_string(tokens[0], "COWSAY") ==0) {
         //char msg[] = "\nCowsay\n";
         //printf(msg);
 
