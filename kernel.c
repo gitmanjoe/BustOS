@@ -10,6 +10,7 @@
 #include "keyboard.h"
 #include "types.h"
 #include "hardware.h"
+#include "sound.h"
 
 #define OSVER "1.0"
 
@@ -39,6 +40,7 @@ void kernel()
 
     crlf();
     printf(prompt);
+    play_freq(3500);
 
     //char tux[] = "Linux Sucks";
     //tuxsay(tux);
