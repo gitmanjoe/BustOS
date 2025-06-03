@@ -105,3 +105,9 @@ void print_hardware_info(void) {
     printf(stepping);
     set_offset(0, 22);
 }
+
+unsigned long long get_time(void) {
+    unsigned int low, high;
+    asm volatile("rdtsc" : "=a"(low), "=d"(high));
+    return ((unsigned long long)high << 32) | low;
+}

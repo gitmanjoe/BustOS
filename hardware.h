@@ -12,7 +12,8 @@ struct cpu_info {
 
 // Function declarations
 void get_cpu_info(struct cpu_info* info);
-void get_memory_size(unsigned int* kb_low, unsigned int* kb_high);
 void print_hardware_info(void);
+
+unsigned long long get_time(void);
 
 #endif

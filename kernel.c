@@ -96,8 +96,6 @@ void execute_command(char* input) {
         print_hardware_info();
     }
     else if (compare_string(input, "HELP") == 0) {
-        //char msg[] = "\nHelp\n";
-        //printf(msg);
         char message[] = "\nECHO: prints to the terminal the string used as a parameter"
                          "\nCOWSAY: Makes a cow say the string used as a parameter"
                          "\nTUXSAY: Makes Tux say the string used as a parameter"
