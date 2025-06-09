@@ -26,4 +26,5 @@ This is our attempt at making an Operating System from scratch.
 - Epic Logo
 ## DISCLAIMER:
 Do not use, copy or steal any of this code. <br>
-If you do, shame on you and your family.
+If you do, shame on you and your family. <br>
+ ©2025 Benjamin Bartholomew, Justin Bustin
